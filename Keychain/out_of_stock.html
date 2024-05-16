@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeKey Out of Stock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(50, 49, 48); /* Secondary color */
+            color: white; /* Secondary color for text */
+        }
+        .container {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: white; /* Container background color */
+            color: black; /* Text color inside container */
+        }
+        input[type="email"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: rgb(206, 27, 51); /* Primary color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(175, 23, 43); /* Slightly darker primary color for hover effect */
+        }
+        p#message {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ooops.. we are <b> out of stock </b> </h1>
+        <p>Please enter your email to be notified when SafeKey is back in stock.</p>
+        <form id="notifyForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
