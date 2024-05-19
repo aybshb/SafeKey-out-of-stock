@@ -51,10 +51,11 @@
     <div class="container">
         <h1>SafeKey Out of Stock</h1>
         <p>Please enter your email to be notified when SafeKey is back in stock.</p>
-        <form id="notifyForm">
-            <input type="email" name="email" placeholder="Enter your email" required>
+        <form id="notifyForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfiH7H7I5SivNjoakOYrw6uWtTZcythHqFJAXzTjv_0a6H5Zg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+            <input type="email" name="entry.1308858926" placeholder="Enter your email" required>
             <button type="submit">Notify Me</button>
         </form>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showThankYouMessage(); submitted = false; }"></iframe>
         <p id="message"></p>
     </div>
     <script src="script.js"></script>
