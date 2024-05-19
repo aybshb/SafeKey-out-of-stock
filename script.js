@@ -1,12 +1,10 @@
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCsMDC9RA-NlpZB3l2JNOcPzCmXGGmhu0k",
   authDomain: "safekey-2285f.firebaseapp.com",
@@ -20,24 +18,22 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = getFirestore();
+const db = getFirestore(app);
 
-
-document.getElementById('notifyForm').addEventListener('submit', function(event) {
+document.getElementById('notifyForm').addEventListener('submit', async function(event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
 
-    db.collection("emails").add({
-        email: email,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    })
-    .then(() => {
+    try {
+        await addDoc(collection(db, "emails"), {
+            email: email,
+            timestamp: serverTimestamp()
+        });
         document.getElementById('message').textContent = 'Thank you! You will be notified when SafeKey is back in stock.';
         document.getElementById('notifyForm').reset(); // Clear the input field
-    })
-    .catch((error) => {
+    } catch (error) {
         console.error("Error adding document: ", error);
         document.getElementById('message').textContent = 'An error occurred. Please try again.';
-    });
+    }
 });
 
