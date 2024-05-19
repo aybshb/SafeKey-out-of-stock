@@ -1,8 +1,4 @@
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,24 +12,23 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-document.getElementById('notifyForm').addEventListener('submit', async function(event) {
+document.getElementById('notifyForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
 
-    try {
-        await addDoc(collection(db, "emails"), {
-            email: email,
-            timestamp: serverTimestamp()
-        });
+    db.collection("emails").add({
+        email: email,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => {
         document.getElementById('message').textContent = 'Thank you! You will be notified when SafeKey is back in stock.';
         document.getElementById('notifyForm').reset(); // Clear the input field
-    } catch (error) {
+    })
+    .catch((error) => {
         console.error("Error adding document: ", error);
         document.getElementById('message').textContent = 'An error occurred. Please try again.';
-    }
+    });
 });
-
