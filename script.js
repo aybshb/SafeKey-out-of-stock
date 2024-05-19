@@ -30,3 +30,4 @@ document.getElementById('notifyForm').addEventListener('submit', function(event)
         document.getElementById('message').textContent = 'An error occurred. Please try again.';
     });
 });
+
