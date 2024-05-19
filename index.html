@@ -48,19 +48,15 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>SafeKey Out of Stock</h1>
-    <p>Please enter your email to be notified when SafeKey is back in stock.</p>
-    <form id="notifyForm" action="https://forms.gle/DXyrDiGUJAyGdvYq9" method="POST" target="hidden_iframe" onsubmit="handleFormSubmit(event);">
-        <input type="email" name="entry.1308858926" placeholder="Enter your email" required>
-        <button type="submit">Notify Me</button>
-    </form>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-    <p id="message"></p>
-</div>
-
-
-
+    <div class="container">
+        <h1>SafeKey Out of Stock</h1>
+        <p>Please enter your email to be notified when SafeKey is back in stock.</p>
+        <form id="notifyForm">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+        <p id="message"></p>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
