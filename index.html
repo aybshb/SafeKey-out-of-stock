@@ -62,10 +62,13 @@
     <div class="container">
         <h1>Ooops.. we are <b> out of stock </b> </h1>
         <p>Please enter your email to be notified when SafeKey is in stock.</p>
-        <form id="notifyForm">
-            <input type="email" id="email" placeholder="Enter your email" required>
-            <button type="submit">Notify Me</button>
-        </form>
+        <form action="YOUR_GOOGLE_FORM_URL" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+    <input type="email" name="entry.YOUR_EMAIL_ENTRY_ID" placeholder="Enter your email" required>
+    <button type="submit">Notify Me</button>
+</form>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<p id="message"></p>
+
         <p id="message"></p>
     </div>
     <script src="script.js"></script>
