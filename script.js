@@ -1,19 +1,23 @@
-// Variable to track form submission
-var submitted = false;
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    var form = event.target;
+    var submitted = false;
 
-// Add an event listener to the form to set the submitted flag to true on submit
-document.getElementById('notifyForm').addEventListener('submit', function(event) {
-    submitted = true;
-});
+    // Create a new FormData object to hold the form data
+    var formData = new FormData(form);
 
-// Function to display the success message after the form is submitted
-function displaySuccessMessage() {
-    if (submitted) {
+    // Send the form data using fetch
+    fetch(form.action, {
+        method: form.method,
+        body: formData,
+        mode: 'no-cors' // Important: Use 'no-cors' to prevent CORS issues
+    }).then(function() {
+        // Display the success message
         document.getElementById('message').textContent = 'Thank you! You will be notified when SafeKey is back in stock.';
-        document.getElementById('notifyForm').reset(); // Clear the input field
-        submitted = false; // Reset the submitted flag
-    }
-}
+        form.reset(); // Clear the input field
+    }).catch(function(error) {
+        console.error('Error:', error);
+    });
 
-// Add an event listener to the iframe to call displaySuccessMessage on load
-document.getElementById('hidden_iframe').addEventListener('load', displaySuccessMessage);
+    return false; // Prevent the default form submission
+}
