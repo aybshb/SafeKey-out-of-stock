@@ -47,21 +47,7 @@
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>SafeKey Out of Stock</h1>
-        <p>Please enter your email to be notified when SafeKey is back in stock.</p>
-        <form id="notifyForm">
-            <input type="email" id="email" placeholder="Enter your email" required>
-            <button type="submit">Notify Me</button>
-        </form>
-        <p id="message"></p>
-    </div>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore-compat.js"></script>
-    <script src="script.js"></script>
-</body>
+
 
 
     
@@ -89,5 +75,21 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
+
+    <body>
+    <div class="container">
+        <h1>SafeKey Out of Stock</h1>
+        <p>Please enter your email to be notified when SafeKey is back in stock.</p>
+        <form id="notifyForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+</body>
     
 </html>
