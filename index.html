@@ -47,30 +47,19 @@
         }
     </style>
 </head>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J3RFCJHZ78"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-J3RFCJHZ78');
-</script>
-    
 <body>
     <div class="container">
-        <h1>Ooops.. we are <b> out of stock </b> </h1>
-        <p>Please enter your email to be notified when SafeKey is in stock.</p>
-        <form action="https://forms.gle/DXyrDiGUJAyGdvYq9" method="post" target="hidden_iframe" onsubmit="submitted=true;">
-    <input type="email" name="entry.1308858926" placeholder="Enter your email" required>
-    <button type="submit">Notify Me</button>
-</form>
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-<p id="message"></p>
-
+        <h1>SafeKey Out of Stock</h1>
+        <p>Please enter your email to be notified when SafeKey is back in stock.</p>
+        <form id="notifyForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfiH7H7I5SivNjoakOYrw6uWtTZcythHqFJAXzTjv_0a6H5Zg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+            <input type="email" name="entry.1308858926" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { document.getElementById('message').textContent = 'Thank you! You will be notified when SafeKey is back in stock.'; submitted = false; }"></iframe>
         <p id="message"></p>
     </div>
-    <script src="script.js"></script>
+    <script>
+        var submitted = false;
+    </script>
 </body>
 </html>
