@@ -1,25 +1,20 @@
-// Variable to track form submission
-var submitted = false;
+document.getElementById('notifyForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = document.querySelector('input[name="email"]').value;
+    const formData = new FormData();
+    formData.append('entry.1308858926', email);
 
-// Function to handle form submission
-function handleFormSubmit(event) {
-    Console.log('kaisa hai1')
-    event.preventDefault(); // Prevent the default form submission behavior
-    submitted = true; // Set the submitted flag to true
-    document.getElementById('notifyForm').submit(); // Submit the form
-    Console.log('kaisa hai2')
-}
-
-// Function to display the success message after the form is submitted
-function displaySuccessMessage() {
-    if (submitted) {
-        Console.log('kaisahai3')
+    fetch('https://docs.google.com/forms/d/e/1FAIpQLSfiH7H7I5SivNjoakOYrw6uWtTZcythHqFJAXzTjv_0a6H5Zg/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+    })
+    .then(response => {
+        // As no-cors mode won't give us response data, we assume success
         document.getElementById('message').textContent = 'Thank you! You will be notified when SafeKey is back in stock.';
         document.getElementById('notifyForm').reset(); // Clear the input field
-        submitted = false; // Reset the submitted flag
-        Console.log('kaisa hai4')
-    }
-}
-
-// Add an event listener to the iframe to call displaySuccessMessage on load
-document.getElementById('hidden_iframe').addEventListener('load', displaySuccessMessage);
+    })
+    .catch(error => {
+        document.getElementById('message').textContent = 'An error occurred. Please try again.';
+    });
+});
