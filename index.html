@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeKey Out of Stock</title>
+    <title>Product Out of Stock</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,6 +45,17 @@
         p#message {
             margin-top: 10px;
         }
+
+        .alert {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+            margin: 0;
+            background-color: rgb(175,23,43); /* Secondary color */
+            color: white; /* Secondary color for text */
+        }
     </style>
 </head>
 <body>
@@ -52,15 +63,17 @@
         <h1>SafeKey Out of Stock</h1>
         <p>Please enter your email to be notified when SafeKey is back in stock.</p>
         <form id="notifyForm">
-            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="email" id="emailid" placeholder="Enter your email" required>
             <button type="submit">Notify Me</button>
         </form>
+        <div id="thankYouMessage" style="display: none;">
+           <br>  Thank you! We will notify you when the item is back in stock.</br>
+          </div>
         <p id="message"></p>
     </div>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./mail.js"></script>
+   
 </body>
 </html>
+
